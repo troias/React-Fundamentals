@@ -4,39 +4,13 @@ import AllMeetups from "./Pages/AllMeetups";
 import NewMeetup from "./Pages/NewMeetup";
 import Favourites from "./Pages/Favourites";
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Layout from './components/layout/Layout'
 
 function App() {
   return (
-    <>
-      <nav
-        style={{
-          backgroundColor: "black",
-          height: "5rem",
-        }}
-      >
-        <ul
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            listStyle: "none",
-            alignItems: "center",
-          }}
-        >
-          <li>
-            <Link to="/to-do">ToDo</Link>
-          </li>
-          <li>
-            <Link to="/newmeetups">NewMeetups</Link>
-          </li>
-          <li>
-            <Link to="/newmeetups">NewMeetups</Link>
-          </li>
-          <li>
-            <Link to="/favourites">Favourites</Link>
-          </li>
-        </ul>
-      </nav>
+
+      <Layout>
 
       <Switch>
         <Route path="/to-do">
@@ -52,7 +26,8 @@ function App() {
           <Favourites />
         </Route>
       </Switch>
-    </>
+      </Layout>
+    
   );
 }
 
