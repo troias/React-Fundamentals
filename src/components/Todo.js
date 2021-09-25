@@ -5,15 +5,15 @@ import BackDrop from './BackDrop'
 
 export const Todo = () => {
     const [todos, setToDos] = useState([])
-    const [confirm, setConfirm] = useState(false)
+    const [modalIsOpen, setmodalIsOpen] = useState(false)
   
     const removeBackdropHandler = () => {
-      setConfirm(false)
+      setmodalIsOpen(false)
     }
   
     const deleteHandler = (event) => {
        event.preventDefault()
-       setConfirm(true)
+       setmodalIsOpen(true)
     }
   
     return (
@@ -27,8 +27,8 @@ export const Todo = () => {
           <button className="btn" onClick={deleteHandler}>Delete</button>
           </div>
           
-          {confirm && <BackDrop remove={removeBackdropHandler}/>}
-          {confirm && <Modal remove={removeBackdropHandler}/>}
+          {modalIsOpen && <BackDrop remove={removeBackdropHandler}/>}
+          {modalIsOpen && <Modal remove={removeBackdropHandler}/>}
         </div>
       </div>
     );
