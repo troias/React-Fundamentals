@@ -5,7 +5,9 @@ import NavBar from '../navigation/NavBar'
     return (
         <div>
             <NavBar/>
+            <main>
            {props.children} 
+           </main>
         </div>
     )
 }

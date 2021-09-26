@@ -1,6 +1,6 @@
 .header {
     width: 100%;
-    height: 5rem;
+    height: 7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,6 +24,7 @@
   
   .header li {
     margin-left: 3rem;
+    margin-bottom: 1rem;
   }
   
   .header a {

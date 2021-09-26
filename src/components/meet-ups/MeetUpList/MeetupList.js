@@ -3,13 +3,16 @@ import classes from './MeetupList.module.css'
 import {DUMMY_DATA} from '../../dummyData/DummyData'
 import MeetUpItem from '../MeetUpItem/MeetUpItem'
 
+
  const MeetupList = () => {
     return (
         <div>
-            <h1>All Meetups </h1>
-            <ul>
+          
+            <ul className={classes.list}>
                 {DUMMY_DATA.map(x => {
-                    return( <li key={x.id} className={classes.list}> <MeetUpItem items={x} /> </li> )
+                    return(
+                         <MeetUpItem items={x}  key={x.id} /> 
+                       )
                 })}
             </ul>
         </div>
