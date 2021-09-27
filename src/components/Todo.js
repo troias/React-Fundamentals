@@ -4,7 +4,7 @@ import Modal from './Modal'
 import BackDrop from './BackDrop'
 
 export const Todo = () => {
-    const [todos, setToDos] = useState([])
+    // const [todos, setToDos] = useState([])
     const [modalIsOpen, setmodalIsOpen] = useState(false)
   
     const removeBackdropHandler = () => {

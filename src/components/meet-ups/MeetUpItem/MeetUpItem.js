@@ -2,6 +2,11 @@ import React from 'react'
 import classes from './MeetUpItem.module.css'
 import Card from '../../ui/card/Card'
 const MeetUpItem = (props) => {
+
+    const addFavouriteHandler = () => {
+        
+    }
+    
     return (
         <li>
             <Card>
@@ -16,7 +21,7 @@ const MeetUpItem = (props) => {
                 <h3>{props.items.description}</h3>
                 <div className={classes.actions}>
 
-                    <button>To Favourites</button>
+                    <button onClick={addFavouriteHandler}>To Favourites</button>
                 </div>
             </div>
             </Card>
