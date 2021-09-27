@@ -1,43 +1,51 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState, useDispatch, useContext } from 'react'
+
 import MeetupList from '../components/meet-ups/MeetUpList/MeetupList'
 
 
 const AllMeetups = () => {
-
     const [meetups, setMeetups] = useState([])
+    const [loading, setIsLoading] = useState(false)
 
     const initialMeetupHandler = async () => {
-        const req = await fetch("https://react-example-8a20f-default-rtdb.firebaseio.com/meetups.json")
-        const res = await req.json()
 
-        let meetupData = []
 
-        for (const i in res) {
-            meetupData.push(res[i])
+        try {
+            setIsLoading(true)
+            const req = await fetch("https://react-example-8a20f-default-rtdb.firebaseio.com/meetups.json")
+            const res = await req.json()
+
+            let meetupData = []
+
+            for (const i in res) {
+                const meetup = {
+                    id: i,
+                    ...res[i]
+                }
+                meetupData.push(meetup)
+
+            }
+
+            console.log(meetupData)
+            setMeetups(meetupData)
+        } catch (error) {
+            setIsLoading(false)
         }
-        console.log(meetupData)
-        setMeetups(meetupData)
-     }
+        setIsLoading(false)
 
-     const setFavouritesHandler = async (item) => {
-        const req = await fetch("https://react-example-8a20f-default-rtdb.firebaseio.com/favourites.json", {
-            method: 'POST',
-            body: JSON.stringify(item), 
-            headers: { 'Content-Type': 'application/json'}
-        })
-      
-     }
+    }
+
 
     useEffect(() => {
         initialMeetupHandler()
-        console.log("t")
     }, [])
 
 
     return (
         <section>
             <h1>All Meetups </h1>
-            <MeetupList favourites={setFavouritesHandler} meetups={meetups} />
+            {loading && "Loading meetups..."}
+            {!loading && <MeetupList  meetups={meetups} />}
         </section>
     )
 }

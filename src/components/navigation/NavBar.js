@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
+import MeetupContext from '../../contextStore/meetupContext'
 import { Link } from "react-router-dom";
 import classes from './MainNavigation.module.css'
+
 const NavBar = () => {
+  // const {favouriteAmount} = useContext(MeetupContext)
+  // console.log(favouriteAmount)
+
   return (
 
 
@@ -18,6 +23,7 @@ const NavBar = () => {
           <Link to="/all-meetups">All Meetups</Link>
         </li>
         <li>
+          <li> </li>
           <Link to="/favourites">Favourites</Link>
         </li>
       </ul>

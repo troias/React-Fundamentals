@@ -2,6 +2,15 @@
     margin: 1rem 0;
   }
   
+  .favList {
+    list-style: none;
+    margin-left: 0.5rem;
+  }
+
+  .favList h3, h2, p{
+    text-align: center;
+  }
+
   .image {
     width: 100%;
     height: 20rem;

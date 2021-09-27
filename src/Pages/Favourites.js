@@ -1,31 +1,52 @@
-import React, {useState, useEffect} from 'react'
+import React, { useContext } from "react";
+import { MeetupContext } from "../contextStore/meetupContext";
+import classes from "../components/meet-ups/MeetUpItem/MeetUpItem.module.css";
 
 const Favourites = () => {
-    const [favourites, setFavourites] = useState([])
+    const ctx = useContext(MeetupContext);
+    console.log("ctx", ctx.favouriteAmount);
 
-    useEffect(() => {
-        addInitialFavouritesHandler()
-    }, [])
 
-    const  addInitialFavouritesHandler = async () => {
-        const req = await fetch("https://react-example-8a20f-default-rtdb.firebaseio.com/favourites.json")
-        const res = await req.json()
+    const removeFavouriteHandler = (id) => {
 
-        let favouriteData = []
 
-        for (const i in res) {
-            favouriteData.push(res[i])
-        }
-        console.log(favouriteData)
-        setFavourites(favouriteData)
+        ctx.removeFavourite(id)
     }
 
     return (
         <div>
-             <h1>Favourites</h1>
-             {favourites.map(favourite => <li>{favourite.title}</li>)}
-        </div>
-    )
-}
+            <h1>Favourites</h1>
+            {ctx.favourites.map((favourite) => {
+                return (
+                    <div className={classes.favList}>
+                        <li>
+                            <h3>{favourite.title}</h3>{" "}
+                        </li>
+                        <div className={classes.image}>
+                            <img src={favourite.image} alt="meetup" />
+                        </div>
 
-export  default Favourites
+                        <li>
+                            <h2> Description </h2>
+                            <p> {favourite.description}</p>{" "}
+                        </li>
+                        <li>
+                            <h2>Address</h2>
+                            <p> {favourite.address}</p>
+                        </li>
+                        <div  className={classes.actions}>
+                            <button
+                               
+                                onClick={() => removeFavouriteHandler(favourite.id)}>
+                                Remove from Favourites
+                            </button>
+                        </div>
+
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+export default Favourites;

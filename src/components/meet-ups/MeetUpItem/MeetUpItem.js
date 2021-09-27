@@ -1,11 +1,26 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import classes from './MeetUpItem.module.css'
 import Card from '../../ui/card/Card'
-const MeetUpItem = (props) => {
+import {MeetupContext} from '../../../contextStore/meetupContext'
 
-    const addFavouriteHandler = () => {
-        
+
+const MeetUpItem = (props) => {
+    const {addFavourites} = useContext(MeetupContext) 
+
+    const addFavouriteHandler = (item) => {
+        console.log(item)
+        const favourite = {
+            image: props.items.image, 
+            title: props.items.title, 
+            address: props.items.address,
+            description: props.items.description,
+
+        }
+        console.log(favourite)
+        addFavourites(favourite)
     }
+
+
     
     return (
         <li>
@@ -21,7 +36,8 @@ const MeetUpItem = (props) => {
                 <h3>{props.items.description}</h3>
                 <div className={classes.actions}>
 
-                    <button onClick={addFavouriteHandler}>To Favourites</button>
+                    <button onClick={addFavouriteHandler}>Add to Favourites</button>
+                   
                 </div>
             </div>
             </Card>
