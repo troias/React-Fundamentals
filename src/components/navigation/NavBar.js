@@ -1,11 +1,14 @@
-import React, {useContext} from "react";
-import MeetupContext from '../../contextStore/meetupContext'
+import React, {useContext, useEffect} from "react";
+import {MeetupContext} from '../../contextStore/meetupContext'
 import { Link } from "react-router-dom";
 import classes from './MainNavigation.module.css'
 
 const NavBar = () => {
-  // const {favouriteAmount} = useContext(MeetupContext)
-  // console.log(favouriteAmount)
+
+  useEffect(()=> {},[])
+  const ctx = useContext(MeetupContext)
+  console.log("ctx", ctx.favouriteAmount)
+ 
 
   return (
 
@@ -22,8 +25,9 @@ const NavBar = () => {
         <li>
           <Link to="/all-meetups">All Meetups</Link>
         </li>
+  
         <li>
-          <li> </li>
+          <span className="badge badge-primary">{ctx.favouriteAmount}</span>
           <Link to="/favourites">Favourites</Link>
         </li>
       </ul>

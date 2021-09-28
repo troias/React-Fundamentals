@@ -4,7 +4,7 @@ import classes from "../components/meet-ups/MeetUpItem/MeetUpItem.module.css";
 
 const Favourites = () => {
     const ctx = useContext(MeetupContext);
-    console.log("ctx", ctx.favouriteAmount);
+   
 
 
     const removeFavouriteHandler = (id) => {

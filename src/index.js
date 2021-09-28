@@ -6,13 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-
+import MeetupContextProvider from './contextStore/meetupContext'
 
 ReactDOM.render(
   <React.StrictMode>
+    <MeetupContextProvider>
     <Router>
     <App />
     </Router>
+    </MeetupContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

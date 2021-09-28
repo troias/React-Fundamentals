@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useDispatch, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import MeetupList from '../components/meet-ups/MeetUpList/MeetupList'
 
@@ -26,7 +26,7 @@ const AllMeetups = () => {
 
             }
 
-            console.log(meetupData)
+           
             setMeetups(meetupData)
         } catch (error) {
             setIsLoading(false)

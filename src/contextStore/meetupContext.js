@@ -4,17 +4,15 @@ export const MeetupContext = React.createContext({
     favourites: [], 
     favouriteAmount: 0,
     loading: false,
-    addFavourites: (item) => {}
+    addFavourites: (item) => {},
+    removeFavouriteHandler: (id) => {}
 })
+
 const MeetupContextProvider = (props) => {
-
+ 
     const [favourites, setFavourites] = useState([])
-    const [favouriteAmount, setFavouriteAmount] = useState(0)
-
     const addFavouritesHandler = (item) => {
-        setFavouriteAmount(prevState => {
-            return prevState++})
-   
+    
         setFavourites((prevState) => {
             return prevState.concat(item)
         })
@@ -24,20 +22,20 @@ const MeetupContextProvider = (props) => {
         setFavourites((prevState) => {
             return prevState.filter(x => x.id !== id)
         })
-        setFavouriteAmount(prevState => {
-            return prevState--})
+    
     }
 
     const meetupContext = {
         favourites, 
         addFavourites: addFavouritesHandler,
         removeFavourite: removeFavouriteHandler,
-        favouriteAmount,
+        favouriteAmount: favourites.length,
     }
    
     return (
         <MeetupContext.Provider value={meetupContext}>
             {props.children}
+           {console.log(meetupContext.favouriteAmount) }
         </MeetupContext.Provider>
     )
 }

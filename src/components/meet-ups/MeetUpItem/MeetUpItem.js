@@ -8,7 +8,7 @@ const MeetUpItem = (props) => {
     const {addFavourites} = useContext(MeetupContext) 
 
     const addFavouriteHandler = (item) => {
-        console.log(item)
+     
         const favourite = {
             image: props.items.image, 
             title: props.items.title, 
@@ -16,7 +16,7 @@ const MeetUpItem = (props) => {
             description: props.items.description,
 
         }
-        console.log(favourite)
+
         addFavourites(favourite)
     }
 
