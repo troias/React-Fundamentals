@@ -1,51 +1,27 @@
 import React, { useContext } from "react";
 import { MeetupContext } from "../contextStore/meetupContext";
 import classes from "../components/meet-ups/MeetUpItem/MeetUpItem.module.css";
+import MeetupList from '../components/meet-ups/MeetUpList/MeetupList'
 
 const Favourites = () => {
     const ctx = useContext(MeetupContext);
    
 
-
-    const removeFavouriteHandler = (id) => {
-
-
-        ctx.removeFavourite(id)
+    let content;
+    if (ctx.favouriteAmount === 0) {
+        content = <p>You got no favourites yet?</p>
+    } else {
+        content = <MeetupList meetups={ctx.favourites}/>
     }
 
+
+
     return (
-        <div>
-            <h1>Favourites</h1>
-            {ctx.favourites.map((favourite) => {
-                return (
-                    <div className={classes.favList}>
-                        <li>
-                            <h3>{favourite.title}</h3>{" "}
-                        </li>
-                        <div className={classes.image}>
-                            <img src={favourite.image} alt="meetup" />
-                        </div>
-
-                        <li>
-                            <h2> Description </h2>
-                            <p> {favourite.description}</p>{" "}
-                        </li>
-                        <li>
-                            <h2>Address</h2>
-                            <p> {favourite.address}</p>
-                        </li>
-                        <div  className={classes.actions}>
-                            <button
-                               
-                                onClick={() => removeFavouriteHandler(favourite.id)}>
-                                Remove from Favourites
-                            </button>
-                        </div>
-
-                    </div>
-                );
-            })}
-        </div>
+    <section>
+        <h1>My Favourites</h1>
+        {content}
+        
+    </section>
     );
 };
 

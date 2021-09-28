@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from "react";
-import {MeetupContext} from '../../contextStore/meetupContext'
+import {MeetupContext} from '../../contextStore/MeetupContext'
 import { Link } from "react-router-dom";
 import classes from './MainNavigation.module.css'
 
@@ -27,8 +27,12 @@ const NavBar = () => {
         </li>
   
         <li>
-          <span className="badge badge-primary">{ctx.favouriteAmount}</span>
-          <Link to="/favourites">Favourites</Link>
+         
+          <Link to="/favourites">
+       
+            Favourites
+            <span className={classes.badge}>{ctx.favouriteAmount}</span>
+          </Link>
         </li>
       </ul>
     </nav>

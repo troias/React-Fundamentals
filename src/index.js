@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-import MeetupContextProvider from './contextStore/meetupContext'
+import MeetupContextProvider from './contextStore/MeetupContext'
 
 ReactDOM.render(
   <React.StrictMode>
